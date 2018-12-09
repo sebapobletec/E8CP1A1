@@ -108,16 +108,22 @@ while menu != 6
     puts "\nIngrese el nuevo producto y su stock de cada tienda en el siguiente formato\nProducto2, 20, 0, 3"
     newproduct = gets.chomp.to_s
     newproduct = newproduct.split(/\W+/)
-    products.push({Product: newproduct[0].to_s, Stock_s1: newproduct[1], Stock_s2: newproduct[2], Stock_s3: newproduct[3]})
-    file = File.open('products.txt','a')
-    file.puts "#{newproduct[0]}, #{newproduct[1]}, #{newproduct[2]}, #{newproduct[3]}"
-    file.close
-    sleep 1
-    puts "\nProducto ingresado\n"
+    if newproduct.length == 4
+      products.push({Product: newproduct[0].to_s, Stock_s1: newproduct[1], Stock_s2: newproduct[2], Stock_s3: newproduct[3]})
+      file = File.open('products.txt','a')
+      file.puts "#{newproduct[0]}, #{newproduct[1]}, #{newproduct[2]}, #{newproduct[3]}"
+      file.close
+      sleep 1
+      puts "\nProducto ingresado correctamente\n"
+      sleep 1
+    else
+      puts "\nProducto no ingresado, recuerda utilizar el formato\n"
+      sleep 1
   end
 
   if menu <1 || menu>6
     puts "Opción inválida"
     sleep 1
   end
+end
 end
